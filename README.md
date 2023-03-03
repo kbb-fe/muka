@@ -27,5 +27,6 @@ dev staging logger for web browser
 * [ ] release-pipeline: test
 * [ ] release-pipeline: bump up version & update changelog
 * [ ] release-pipeline: publish npm
-* [ ] release-pipeline: tsdoc(github.io pages)
-* [ ] release-pipeline: post changelog(sns, blog, manual site)
+* [ ] release-pipeline: build:tsdoc
+* [ ] release-pipeline: build:manual(docusaurus)
+* [ ] release-pipeline: publish doc(github.io pages)
