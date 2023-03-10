@@ -11,10 +11,16 @@ on:
       - 'release/v**'
 
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - run: "echo nice work"
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - run: "yarn install --frozen-lockfile"
+      - run: "yarn build"
+      - run: "ls ./dist -1lh"
     
 # build:
 #   runs-on: ubuntu-latest
