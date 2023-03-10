@@ -16,9 +16,9 @@ dev staging logger for web browser
 ## TODO
 
 * [x] [design: interface](https://kyobobook.atlassian.net/wiki/spaces/SAT/pages/618725441/Muka+Logger+Interface+Design?atlOrigin=eyJpIjoiOTkzMWZmZjAwNWMyNDE2Zjk2MTQ3OWJkODYzYzQ5YTEiLCJwIjoiaiJ9)
-* [ ] design: branch
-  * main(master)
-  * develop
+* [x] design: branch
+  * develop (default)
+  * main (ci/cd)
   * release/{version}
   * feature/{version}
   * hotfix/{issue}
