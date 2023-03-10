@@ -1,6 +1,8 @@
 # muka-logger
 dev staging logger for web browser
 
+* [muka-logger](https://kyobobook.atlassian.net/wiki/spaces/SAT/pages/608239705/muka-logger)
+
 ## Features
 
 * [TypeScript](https://www.typescriptlang.org/)
@@ -13,8 +15,13 @@ dev staging logger for web browser
 
 ## TODO
 
-* [ ] design: interface
+* [x] [design: interface](https://kyobobook.atlassian.net/wiki/spaces/SAT/pages/618725441/Muka+Logger+Interface+Design?atlOrigin=eyJpIjoiOTkzMWZmZjAwNWMyNDE2Zjk2MTQ3OWJkODYzYzQ5YTEiLCJwIjoiaiJ9)
 * [ ] design: branch
+  * main(master)
+  * develop
+  * release/{version}
+  * feature/{version}
+  * hotfix/{issue}
 * [ ] setup: .gitignore
 * [ ] setup: npm
 * [ ] setup: typescript
