@@ -22,18 +22,20 @@ dev staging logger for web browser
   * release/{version}
   * feature/{version}
   * hotfix/{issue}
-* [ ] setup: .gitignore
-* [ ] setup: npm
-* [ ] setup: typescript
+* [x] setup: .gitignore
+* [x] setup: npm
+* [x] setup: typescript
+* [ ] release: ci/cd pipeline(github action)
+* [ ] release-pipeline: build
+* [ ] release-pipeline: bump up version & update changelog
+* [ ] release-pipeline: publish npm
+* [ ] release-pipeline: merge main branch & tagging
+
 * [ ] setup: jest testing
 * [ ] setup: eslint
 * [ ] setup: lintstaged + husky
 * [ ] setup: release build task
-* [ ] release: ci/cd pipeline(github action)
-* [ ] release-pipeline: build
 * [ ] release-pipeline: test
-* [ ] release-pipeline: bump up version & update changelog
-* [ ] release-pipeline: publish npm
 * [ ] release-pipeline: build:tsdoc
 * [ ] release-pipeline: build:manual(docusaurus)
 * [ ] release-pipeline: publish doc(github.io pages)
