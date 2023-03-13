@@ -39,43 +39,30 @@ jobs:
       
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-      - run: git config user.name 'github-actions[bot]'
-      - run: git config user.email 'github-actions[bot]@users.noreply.github.com'
-      - run: "yarn install --frozen-lockfile"
-      - run: "yarn standard-version --release-as ${GITHUB_REF#refs/heads/release/v}"
-      - run: "ls -1lh"
-      - run: "cat package.json"
-      # - run: "yarn build"
-      # - run: "ls ./dist -1lh"
+      - run: yarn install --frozen-lockfile
+      - run: yarn build
     
-# build:
-#   runs-on: ubuntu-latest
-#   steps:
-#     - uses: actions/checkout@v3
-#     - uses: actions/setup-node@v3
-#       with:
-#         node-version: 16
-#     - run: npm ci
-#     - run: npm test
-
-# publish-gpr:
-#   needs: build
-#   runs-on: ubuntu-latest
-#   permissions:
-#     contents: read
-#     packages: write
-#   steps:
-#     - uses: actions/checkout@v3
-#     - uses: actions/setup-node@v3
-#       with:
-#         node-version: 16
-#         registry-url: https://npm.pkg.github.com/
-#     - run: npm ci
-#     - run: npm publish
-#       env:
-#         NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+  publish-gpr:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          # registry-url: https://npm.pkg.github.com/
+      - run: echo "NPM_PUB_SECRET - ${{secrets.NPM_PUB_SECRET}}"
+      - run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_PUB_SECRET}}
