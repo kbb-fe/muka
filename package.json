@@ -1,13 +1,15 @@
 {
   "name": "@kyobobook/muka",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "dev staging logger for web browser",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prebuild": "trash ./dist/*",
     "build": "tsc",
-    "release:test": "standard-version --release-as patch --dry-run"
+    "release": "standard-version --release-as patch",
+    "release:minor": "standard-version --release-as minor",
+    "release:major": "standard-version --release-as major"
   },
   "repository": {
     "type": "git",
