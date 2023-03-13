@@ -71,22 +71,26 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-          # registry-url: https://npm.pkg.github.com/
+          registry-url: https://npm.pkg.github.com/
+          # Defaults to the user or organization that owns the workflow file
+          scope: '@kyobobook'
       - name: Download all workflow run artifacts
         uses: actions/download-artifact@v3
         with:
           name: built-files
       - name: check files
         run: ls -1lh
-      - name: echo envs
-        env:
-          credentials: ${{ secrets.NPM_PUB_SECRET }}
-        run: |
-          echo "env.NODE_AUTH_TOKEN - ${{env.NODE_AUTH_TOKEN}}"
-          echo "NODE_AUTH_TOKEN - ${NODE_AUTH_TOKEN}"
-          echo "--------------------------------------------"
-          echo "env.credentials - ${{env.credentials}}"
-          echo "credentials - ${credentials}"
+      # - name: echo envs
+      #   env:
+      #     credentials: ${{ secrets.NPM_PUB_SECRET }}
+      #   run: |
+      #     echo "env.NODE_AUTH_TOKEN - ${{env.NODE_AUTH_TOKEN}}"
+      #     echo "NODE_AUTH_TOKEN - ${NODE_AUTH_TOKEN}"
+      #     echo "--------------------------------------------"
+      #     echo "env.credentials - ${{env.credentials}}"
+      #     echo "credentials - ${credentials}"
         
       - name: npm publish
         run: npm publish --access=public --dry-run
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
