@@ -49,13 +49,14 @@ jobs:
           node-version: 16
       - run: yarn install --frozen-lockfile
       - run: yarn build
+      - run: tar -cvf built.tar dist
       - name: check build files
         run: ls dist -1lh
       - name: 'Upload Artifact'
         uses: actions/upload-artifact@v3
         with:
-          name: built-files
-          path: dist
+          name: archive
+          path: dist.tar
           # retention-days: 1
     
   publish:
@@ -77,9 +78,11 @@ jobs:
       - name: Download all workflow run artifacts
         uses: actions/download-artifact@v3
         with:
-          name: built-files
+          name: archive
       - name: check files
-        run: ls -1lh
+        run: |
+          tar -xvf dist.tar
+          ls -1lh
       # - name: echo envs
       #   env:
       #     credentials: ${{ secrets.NPM_PUB_SECRET }}

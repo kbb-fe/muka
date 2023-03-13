@@ -1,3 +1,4 @@
+*.tar
 .env*
 !.env.example
 
