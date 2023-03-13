@@ -49,6 +49,8 @@ jobs:
           node-version: 16
       - run: yarn install --frozen-lockfile
       - run: yarn build
+      - name: check build files
+        run: ls dist -1lh
     
   publish-gpr:
     needs: build
@@ -56,13 +58,16 @@ jobs:
     permissions:
       contents: read
       packages: write
+    env:
+      NPM_AUTH_TOKEN: ${{secrets.NPM_PUB_SECRET}}
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version: 16
           # registry-url: https://npm.pkg.github.com/
-      - run: echo "NPM_PUB_SECRET - ${{secrets.NPM_PUB_SECRET}}"
+      - name: check files
+        run: ls -1lh
+      - run: echo "NPM_PUB_SECRET - ${NPM_AUTH_TOKEN}"
+      - run: NODE_AUTH_TOKEN=$NPM_AUTH_TOKEN
       - run: npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_PUB_SECRET}}
