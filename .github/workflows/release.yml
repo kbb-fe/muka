@@ -79,8 +79,6 @@ jobs:
       - name: check files
         run: ls -1lh
       - name: echo envs
-        with:
-          credentials: ${{ secrets.NPM_PUB_SECRET }}
         env:
           credentials: ${{ secrets.NPM_PUB_SECRET }}
         run: |
