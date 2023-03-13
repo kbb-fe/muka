@@ -70,4 +70,4 @@ jobs:
         run: ls -1lh
       - run: echo "NPM_PUB_SECRET - ${NPM_AUTH_TOKEN}"
       - run: NODE_AUTH_TOKEN=$NPM_AUTH_TOKEN
-      - run: npm publish --access public
+      - run: npm publish --access=public --dry-run
