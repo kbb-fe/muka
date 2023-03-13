@@ -15,43 +15,43 @@ on:
 #   RELEASE_VERSION: ""
 
 jobs:
-  parse-release-version:
-    runs-on: ubuntu-latest
-    steps:
-      # - run: "echo \"##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})\""
-      - name: Set GITHUB_ENV
-        run: |
-          echo ${GITHUB_REF#refs/heads/release/v}
-          echo RELEASE_VERSION="${GITHUB_REF#refs/heads/release/v}"
-          # echo ${GITHUB_ENV}
-          # echo RELEASE_VERSION="${GITHUB_REF#refs/heads/release/v}" >> $GITHUB_ENV
-          # echo "RELEASE_VERSION=${{ env.RELEASE_VERSION }}"
-      # - name: Set the value
-      #   id: step_one
-      #   run: |
-      #     echo "action_state=yellow" >> $GITHUB_ENV
-      #     echo "${{ env.action_state }}" # This will output 'yellow'
-      - name: Use the value
-        id: step_two
-        run: |
-          # echo "${{ env.action_state }}" # This will output 'yellow'
-          echo "RELEASE_VERSION=${{ env.RELEASE_VERSION }}"
-      
-  # build:
+  # parse-release-version:
   #   runs-on: ubuntu-latest
   #   steps:
-  #     - uses: actions/checkout@v3
-  #     - uses: actions/setup-node@v3
-  #       with:
-  #         node-version: 16
-  #     - run: git config user.name 'github-actions[bot]'
-  #     - run: git config user.email 'github-actions[bot]@users.noreply.github.com'
-  #     - run: "yarn install --frozen-lockfile"
-  #     - run: "yarn standard-version --release-as ${GITHUB_REF#refs/heads/release/v}"
-  #     - run: "ls -1lh"
-  #     - run: "cat package.json"
-  #     # - run: "yarn build"
-  #     # - run: "ls ./dist -1lh"
+  #     # - run: "echo \"##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})\""
+  #     - name: Set GITHUB_ENV
+  #       run: |
+  #         echo ${GITHUB_REF#refs/heads/release/v}
+  #         echo RELEASE_VERSION="${GITHUB_REF#refs/heads/release/v}"
+  #         # echo ${GITHUB_ENV}
+  #         # echo RELEASE_VERSION="${GITHUB_REF#refs/heads/release/v}" >> $GITHUB_ENV
+  #         # echo "RELEASE_VERSION=${{ env.RELEASE_VERSION }}"
+  #     # - name: Set the value
+  #     #   id: step_one
+  #     #   run: |
+  #     #     echo "action_state=yellow" >> $GITHUB_ENV
+  #     #     echo "${{ env.action_state }}" # This will output 'yellow'
+  #     - name: Use the value
+  #       id: step_two
+  #       run: |
+  #         # echo "${{ env.action_state }}" # This will output 'yellow'
+  #         echo "RELEASE_VERSION=${{ env.RELEASE_VERSION }}"
+      
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - run: git config user.name 'github-actions[bot]'
+      - run: git config user.email 'github-actions[bot]@users.noreply.github.com'
+      - run: "yarn install --frozen-lockfile"
+      - run: "yarn standard-version --release-as ${GITHUB_REF#refs/heads/release/v}"
+      - run: "ls -1lh"
+      - run: "cat package.json"
+      # - run: "yarn build"
+      # - run: "ls ./dist -1lh"
     
 # build:
 #   runs-on: ubuntu-latest
