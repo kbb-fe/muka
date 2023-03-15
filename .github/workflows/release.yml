@@ -83,15 +83,15 @@ jobs:
         run: |
           tar -xvf dist.tar
           ls -1lh
-      # - name: echo envs
-      #   env:
-      #     credentials: ${{ secrets.NPM_PUB_SECRET }}
-      #   run: |
-      #     echo "env.NODE_AUTH_TOKEN - ${{env.NODE_AUTH_TOKEN}}"
-      #     echo "NODE_AUTH_TOKEN - ${NODE_AUTH_TOKEN}"
-      #     echo "--------------------------------------------"
-      #     echo "env.credentials - ${{env.credentials}}"
-      #     echo "credentials - ${credentials}"
+      - name: echo envs
+        env:
+          credentials: ${{ secrets.NPM_PUB_SECRET }}
+        run: |
+          echo "env.NODE_AUTH_TOKEN - ${{env.NODE_AUTH_TOKEN}}"
+          echo "NODE_AUTH_TOKEN - ${NODE_AUTH_TOKEN}"
+          echo "--------------------------------------------"
+          echo "env.credentials - ${{env.credentials}}"
+          echo "credentials - ${credentials}"
         
       - name: npm publish
         run: npm publish --access=public --dry-run
